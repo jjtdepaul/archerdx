@@ -17,3 +17,14 @@ variable "AZ1" {
 variable "AZ2" {
   default = "us-west-2b"
 }
+
+variable "AMIS" {
+  type = map(string)
+  default = {
+    us-west-1 = "ami-b2c1d9d2"
+    us-west-2 = "ami-fef48b86"
+  }
+}
+
+
+
