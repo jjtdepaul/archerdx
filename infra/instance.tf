@@ -1,11 +1,10 @@
 resource "aws_instance" "nginx" {
-  count = 2
+  for_each = aws_subnet.archer-public 
   ami           = var.AMIS[var.AWS_REGION]
   instance_type = "t2.micro"
 
   # the VPC subnet
-  subnet_id = aws_subnet.archer-public.*.id[count.index]
-  #subnet_id = aws_subnet.archer-public-2.id
+  subnet_id = each.value.id 
 
   # the security group
   vpc_security_group_ids = [aws_security_group.allow-ssh.id]
@@ -18,7 +17,7 @@ resource "aws_instance" "nginx" {
   # user data
   #user_data = data.template_cloudinit_config.cloudinit-example.rendered
   tags = {
-    Name  = "archer-nginx-${count.index + 1}"
+    Name  = "archer-nginx"
   }
 
 

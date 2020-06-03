@@ -12,28 +12,28 @@ resource "aws_vpc" "archer" {
 
 # Subnets
 resource "aws_subnet" "archer-public" {
-  count                   = length(var.AZS)
+  for_each                = local.subnets  
   vpc_id                  = aws_vpc.archer.id
-  cidr_block              = element(var.public_cidrs, count.index)
+  cidr_block              = each.value.cidr 
   map_public_ip_on_launch = "true"
-  availability_zone       = element(var.AZS, count.index)
+  availability_zone       = each.value.az 
 
   tags = {
-    Name = "archer-public-${count.index}"
+    Name = "archer-public-each.value.az"
   }
 }
 
-resource "aws_subnet" "archer-private" {
-  count                   = length(var.AZS)
-  vpc_id                  = aws_vpc.archer.id
-  cidr_block              = element(var.private_cidrs, count.index)
-  map_public_ip_on_launch = "false"
-  availability_zone       = element(var.AZS, count.index)
+#resource "aws_subnet" "archer-private" {
+#  count                   = length(var.AZS)
+#  vpc_id                  = aws_vpc.archer.id
+#  cidr_block              = element(var.private_cidrs, count.index)
+#  map_public_ip_on_launch = "false"
+#  availability_zone       = element(var.AZS, count.index)
 
-  tags = {
-    Name = "archer-private-${count.index}"
-  }
-}
+#  tags = {
+#    Name = "archer-private-${count.index}"
+#  }
+#}
 
 #resource "aws_subnet" "archer-private" {
 #  for_each                = toset(var.AZS)

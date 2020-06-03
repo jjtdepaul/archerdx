@@ -1,8 +1,6 @@
-output "nginx1" {
-  value = aws_instance.nginx[0].public_ip
+output "nginx" {
+  value = {
+    for instance in aws_instance.nginx:
+    instance.id => instance.public_ip
+  }
 }
-
-output "nginx2" {
-  value = aws_instance.nginx[1].public_ip
-}
-
