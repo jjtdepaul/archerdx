@@ -4,7 +4,7 @@ resource "aws_instance" "nginx" {
   instance_type = "t2.micro"
 
   # the VPC subnet
-  subnet_id = aws_subnet.archer-public-count.index.id
+  subnet_id = aws_subnet.archer-public.*.id[count.index]
   #subnet_id = aws_subnet.archer-public-2.id
 
   # the security group

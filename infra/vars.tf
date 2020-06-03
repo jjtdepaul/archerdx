@@ -26,5 +26,36 @@ variable "AMIS" {
   }
 }
 
+variable "public_cidrs" {
+  type = list(string)
+  default = ["10.0.1.0/24","10.0.2.0/24"]
+}
 
+variable "private_cidrs" {
+  type = list(string)
+  default = ["10.0.4.0/24","10.0.5.0/24"]
+}
+
+variable "AZS" {
+  type = list(string)
+  default = ["us-west-2a", "us-west-2b"]
+}
+
+# Local variables
+locals {
+  subnets = {
+    pub_a = {
+      cidr = "10.0.0.0/20"
+      az = "us-east-2a"
+    },
+    pub_b = {
+      cidr = "10.0.16.0/20"
+      az = "us-east-2b"
+    },
+    pub_c = {
+      cidr = "10.0.32.0/20"
+      az = "us-east-2c"
+    }
+  }
+}
 
