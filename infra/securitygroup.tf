@@ -19,3 +19,26 @@ resource "aws_security_group" "allow-ssh" {
     Name = "allow-ssh"
   }
 }
+
+
+resource "aws_security_group" "allow-8080" {
+  vpc_id      = aws_vpc.archer.id
+  name        = "allow-8080"
+  description = "security group that allows access to port8080 for Jenkins"
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 8080 
+    to_port     = 8080 
+    protocol    = "tcp"
+    cidr_blocks = ["73.153.131.221/32"]
+  }
+  tags = {
+    Name = "allow-8080"
+  }
+}
