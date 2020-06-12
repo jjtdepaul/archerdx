@@ -1,0 +1,7 @@
+[apps]
+52.11.107.8
+52.36.49.173
+34.212.77.154
+
+[apps:vars]
+ansible_python_interpreter=/usr/bin/python3
