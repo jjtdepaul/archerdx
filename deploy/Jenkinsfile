@@ -20,4 +20,12 @@ node {
        app.push('latest')
      }                                     
    }                                       
+   stage('deploy the latest docker container just buit') {
+     ansiblePlaybook( 
+         playbook: '../configure/playbook.yml',
+         inventory: '..configure/hosts', 
+         credentialsId: 'archerkey'
+     )
+   }
+
 }                                          
