@@ -21,11 +21,13 @@ node {
      }                                     
    }                                       
    stage('deploy the latest docker container just buit') {
-     ansiblePlaybook( 
-         playbook: '../configure/playbook.yml',
-         inventory: '..configure/hosts', 
-         credentialsId: 'archerkey'
-     )
+     ansiblePlaybook(credentialsId: 'archerkey', inventory: '../configure/playbook.yml', playbook: '../configure/hosts')
+     
+     def ansibleContainer = docker.image('gianca/ansible29-node10')
+      ansibleContainer.pull()
+      ansibleContainer.inside { 
+
+     }
    }
 
 }                                          
