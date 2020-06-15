@@ -3,11 +3,11 @@ variable "AWS_REGION" {
 }
 
 variable "PATH_TO_PRIVATE_KEY" {
-  default = "archerkey"
+  default = "~/.ssh/archerkey"
 }
 
 variable "PATH_TO_PUBLIC_KEY" {
-  default = "archerkey.pub"
+  default = "~/.ssh/archerkey.pub"
 }
 
 variable "AZ1" {

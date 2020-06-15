@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+  - name: Install pip3 docker 
+    pip:
+      name: docker
+      executable: pip3
+

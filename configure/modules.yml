@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+  - name: Install pip3 using apt      
+    command: pip freeze  
+

@@ -7,7 +7,7 @@ resource "aws_instance" "app" {
   subnet_id = each.value.id 
 
   # the security group
-  vpc_security_group_ids = [aws_security_group.allow-ssh.id]
+  vpc_security_group_ids = [aws_security_group.allow-ssh.id,aws_security_group.allow-3000.id]
 
   # the public SSH key
   key_name = aws_key_pair.archerkeypair.key_name
