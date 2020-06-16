@@ -1,7 +1,7 @@
 [apps]
-34.218.228.73x
-54.202.248.159x
-54.200.230.62x
+34.218.228.73
+54.202.248.159
+54.200.230.62
 
 [apps:vars]
 ansible_python_interpreter=/usr/bin/python3
