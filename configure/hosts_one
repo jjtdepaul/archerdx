@@ -1,5 +1,0 @@
-[apps]
-34.212.38.70
-
-[apps:vars]
-ansible_python_interpreter=/usr/bin/python3
